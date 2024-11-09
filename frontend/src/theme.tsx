@@ -1,45 +1,52 @@
-import { extendTheme } from "@chakra-ui/react";
-
-
+import { extendTheme, textDecoration } from "@chakra-ui/react";
+// dummy theme, my original website theme
 const customTheme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: "#252127",
-        color: "white",
-
+        bg: "#CE9964",
+        color: "#CE9964",
+        m: "50px"
       },
     },
   },
   components: {
-    Link: {
-      baseStyle: {
-        _hover: {
-          textDecoration: "underline",
-          color: "gray",
+    Button: {
+      variants: {
+        sm: {
+          bg: '#CE9964',
+          fontSize: 'md',
+          color: "white",
+          _hover: {
+            bg: '#B07A4A',
+            border: "color",
+            textDecoration: "none",
+          },
         },
+        circular: {
+            bg: '#CE9964',
+            fontSize: 'md',
+            color: "white",
+            borderRadius: '50%',
+            height: "70px",
+            width: "90px",
+            _hover: {
+              bg: '#B07A4A',
+              border: "color"
+            },
+          },
+      },
+      defaultProps: {
+        size: 'lg', // default is md
+        variant: 'sm', // default is solid
+        colorScheme: 'green', // default is gray
       },
     },
-    Text: {
-        baseStyle: {
-          fontFamily: "Inter",
-          fontSize: "md",
-          fontWeight: "100"
-        }
-    },
-    Heading: {
+    Container: {
       baseStyle: {
-        fontFamily: "Comfortaa",
-        fontSize: "3xl",
+        color: "#FFE8CB",
       },
     },
-    h2: {
-      baseStyle: {
-        fontFamily: "Inter",
-        fontSize: "xl",
-      }
-    },
-
   },
 });
 
