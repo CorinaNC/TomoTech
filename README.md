@@ -1,2 +1,2 @@
 # TomoTech
-Tasks, but with a Tamagatchi
+Tasks, but with a Tamagotchi
