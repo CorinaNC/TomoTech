@@ -1,11 +1,11 @@
-import './App.css'
+import { Button, Text, Box } from '@chakra-ui/react'
+
 
 function App() {
-
   return (
-    <body>
-      TomoTech
-    </body>
+    <Box>
+      Lorem ipsum
+    </Box>
   )
 }
 
