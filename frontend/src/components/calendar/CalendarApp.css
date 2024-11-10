@@ -48,7 +48,7 @@ html {
   
   color: #000000;
   /* letter-spacing: 0.1rem; */
-  padding-left: 1.3rem;
+  /* padding-left: 1.3rem; */
 }
 
 .navigate-date {
@@ -61,7 +61,7 @@ html {
 .navigate-date h2 {
   font-size: clamp(1rem, 1.5cqi, 2rem);
   color: #bbb;
-  padding-left: 1.3rem;
+  /* padding-left: 1.3rem; */
 }
 
 .buttons {
@@ -152,6 +152,7 @@ html {
   align-items: center;
   row-gap: 2rem;
   /* display: none; */
+  z-index: 100;
 }
 
 .time-input {
@@ -232,7 +233,6 @@ html {
   cursor: pointer;
 }
 
-/* TODO: button lol sob */
 .close-event-popup i {
   font-size: 2.5rem;
   color: #000;

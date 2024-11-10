@@ -1,0 +1,21 @@
+{"frames": {
+
+"angy-stand.png":
+{
+	"frame": {"x":0,"y":0,"w":192,"h":384},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":384},
+	"sourceSize": {"w":192,"h":384},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "angry-stand.png",
+	"format": "RGBA8888",
+	"size": {"w":192,"h":384},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:087bcecb3e9e0aa98825d3652d87d12d:d0bc6b4fa20ee80b2d3afa35168af45a:7ecda5ab50f23873c270db19166e8f0f$"
+}
+}

@@ -31,7 +31,7 @@ const customTheme = extendTheme({
             height: "70px",
             width: "90px",
             _hover: {
-              bg: '#B07A4A',
+              bg: '#915f33',
               border: "color"
             },
           },

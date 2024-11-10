@@ -1,8 +1,7 @@
-import { VStack, GridItem, Grid, Box, Image } from '@chakra-ui/react'
-import Header from "../components/header.tsx"
-import CalendarApp from "../components/calendar/CalendarApp.jsx"
-import PixiApp from "../components/pixi.js/PixiApp.jsx"
-import { LoginButton } from '../components/login-button.jsx'
+import { VStack, GridItem, Grid, Box } from '@chakra-ui/react'
+import Header from "./components/header"
+import CalendarApp from "./components/calendar/CalendarApp.jsx"
+import PixiApp from "./components/pixi.js/PixiApp"
 
 function Home() {
   return (

@@ -1,0 +1,20 @@
+{"frames": {
+
+"walk-left-happy.png":
+{
+	"frame": {"x":0,"y":0,"w":576,"h":576},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":576,"h":576},
+	"sourceSize": {"w":576,"h":576}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "happy-walk.png",
+	"format": "RGBA8888",
+	"size": {"w":576,"h":576},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4142ab32f5274e53cb26096e34de6cc8:89ec25c31aa1f450094153f258d0fa51:7bae8fbc44ec105cb9625de36f2a41ed$"
+}
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./CalendarApp.css";
 import { Icon } from "@chakra-ui/react";
 import { HiChevronLeft } from "react-icons/hi";
@@ -34,9 +34,26 @@ const CalendarApp = () => {
   const [eventTime, setEventTime] = useState({ hours: "00", minutes: "00" });
   const [eventText, setEventText] = useState("");
   const [editingEvent, setEditingEvent] = useState(null);
-
+  const baseUrl = "tomotech.onrender.com/"
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch(`http://${baseUrl}/events`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch events");
+        }
+        const data = await response.json();
+        setEvents(data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   const prevMonth = () => {
     setCurrentMonth((prevMonth) => (prevMonth === 0 ? 11 : prevMonth - 1));
@@ -72,15 +89,19 @@ const CalendarApp = () => {
     );
   };
 
-  const handleEventSubmit = () => {
+  const handleEventSubmit = async () => {
     const newEvent = {
-      id: editingEvent ? editingEvent.id : Date.now(),
-      date: selectedDate,
-      time: `${eventTime.hours.padStart(2, "0")}:${eventTime.minutes.padStart(
+      id: editingEvent ? editingEvent.id : events.length + 1,
+      description: eventText,
+      date: {
+        year: selectedDate.getFullYear(),
+        month: selectedDate.getMonth(),
+        day: selectedDate.getDate(),
+      },
+      end_time: `${eventTime.hours.padStart(2, "0")}:${eventTime.minutes.padStart(
         2,
         "0"
       )}`,
-      text: eventText,
     };
 
     let updatedEvents = [...events];
@@ -93,29 +114,69 @@ const CalendarApp = () => {
       updatedEvents.push(newEvent);
     }
 
-    updatedEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
-
     setEvents(updatedEvents);
     setEventTime({ hours: "00", minutes: "00" });
     setEventText("");
     setShowEventPopup(false);
     setEditingEvent(null);
+
+    try {
+      const res = await fetch(`http://${baseUrl}:8000/events`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newEvent),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to add event");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const handleEditEvent = (event) => {
-    setSelectedDate(new Date(event.date));
+  const handleEditEvent = async (event) => {
     setEventTime({
-      hours: event.time.split(":")[0],
-      minutes: event.time.split(":")[1],
+      hours: event.end_time.split(":")[0],
+      minutes: event.end_time.split(":")[1],
     });
-    setEventText(event.text);
+    setEventText(event.description);
     setEditingEvent(event);
     setShowEventPopup(true);
+    
+    try {
+      const response = await fetch(`http://${baseUrl}:8000/events/${event.id}`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(event),
+      });
+      if (!response.ok) {
+        throw new Error('failed to update :(')
+      }
+      const updatedEvent = await response.json();
+      setEvents((prevEvents) => prevEvents.map((evt) => (evt.id === updatedEvent.id ? updatedEvent : evt)));
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const handleDeleteEvent = (eventId) => {
+  const handleDeleteEvent = async (eventId) => {
     const updatedEvents = events.filter((event) => event.id !== eventId);
     setEvents(updatedEvents);
+    try {
+      const response = await fetch(`http://${baseUrl}:8000/events/${eventId}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete event");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleTimeChange = (e) => {
@@ -126,8 +187,6 @@ const CalendarApp = () => {
       [name]: value.padStart(2, "0"),
     }));
   };
-
-  console.log(currentMonth, currentYear, currentDate);
   return (
     <div className="calendar-app">
       <div className="calendar">
@@ -171,59 +230,15 @@ const CalendarApp = () => {
         </div>
       </div>
       <div className="events">
-        {showEventPopup && (
-          <div className="event-popup">
-            <div className="time-input">
-              <div className="event-popup-time">Time</div>
-              <input
-                type="number"
-                name="hours"
-                min={0}
-                max={24}
-                className="hours"
-                value={eventTime.hours}
-                onChange={handleTimeChange}
-              />
-              <input
-                type="number"
-                name="minutes"
-                min={0}
-                max={59}
-                className="minutes"
-                value={eventTime.minutes}
-                onChange={handleTimeChange
-                }
-              />
-            </div>
-            <textarea
-              placeholder="Enter Event Text (Max 100 Characters)"
-              value={eventText}
-              onChange={(e) => {
-                if (e.target.value.length <= 100) {
-                  setEventText(e.target.value);
-                }
-              }}
-            />
-            <button className="event-popup-btn" onClick={handleEventSubmit}>
-              {editingEvent ? "Update Event" : "Add Event"}
-            </button>
-            <button
-              className="close-event-popup"
-              onClick={() => setShowEventPopup(false)}
-            >
-              <Icon as={HiOutlineX} className="icon" />
-            </button>
-          </div>
-        )}
         {events.map((event, index) => (
           <div className="event" key={index}>
             <div className="event-date-wrapper">
               <div className="event-date">{`${
-                monthsOfYear[event.date.getMonth()]
-              } ${event.date.getDate()}, ${event.date.getFullYear()}`}</div>
-              <div className="event-time">{event.time}</div>
+                monthsOfYear[event.date.month]
+              } ${event.date.day}, ${event.date.year}`}</div>
+              <div className="event-time">{event.end_time}</div>
             </div>
-            <div className="event-text">{event.text}</div>
+            <div className="event-text">{event.description}</div>
             <div className="event-buttons">
               <button
                 className="edit-event"
@@ -240,6 +255,50 @@ const CalendarApp = () => {
             </div>
           </div>
         ))}
+        {showEventPopup && (
+          <div className="event-popup">
+            <div className="time-input">
+              <div className="event-popup-time">Time</div>
+              <input
+                type="number"
+                name="hours"
+                min={0}
+                max={23}
+                className="hours"
+                value={eventTime.hours}
+                onChange={handleTimeChange}
+              />
+              <input
+                type="number"
+                name="minutes"
+                min={0}
+                max={59}
+                className="minutes"
+                value={eventTime.minutes}
+                onChange={handleTimeChange
+                }
+              />
+            </div>
+            <textarea
+              placeholder="Enter Event Text (Max 50 Characters)"
+              value={eventText}
+              onChange={(e) => {
+                if (e.target.value.length <= 50) {
+                  setEventText(e.target.value);
+                }
+              }}
+            />
+            <button className="event-popup-btn" onClick={handleEventSubmit}>
+              {editingEvent ? "Update Event" : "Add Event"}
+            </button>
+            <button
+              className="close-event-popup"
+              onClick={() => setShowEventPopup(false)}
+            >
+              <Icon as={HiOutlineX} className="icon" />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

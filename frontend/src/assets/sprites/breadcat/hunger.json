@@ -1,0 +1,21 @@
+{"frames": {
+
+"HUNGY.png":
+{
+	"frame": {"x":0,"y":0,"w":384,"h":576},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":384,"h":576},
+	"sourceSize": {"w":384,"h":576},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "hunger.png",
+	"format": "RGBA8888",
+	"size": {"w":384,"h":576},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e621e7913b190aafb240ca59a2e957f2:f137ed8694086a356e0607d120b73393:b7583d844981aae43ab5a88a6b85f20b$"
+}
+}
