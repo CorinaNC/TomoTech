@@ -1,0 +1,21 @@
+{"frames": {
+
+"hungy-stand.png":
+{
+	"frame": {"x":0,"y":0,"w":192,"h":384},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":384},
+	"sourceSize": {"w":192,"h":384},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "hunger-stand.png",
+	"format": "RGBA8888",
+	"size": {"w":192,"h":384},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:706b88c4e6f2200b21545e3a95428fde:1df32ca531b14775c6cff67ff92e33c3:7ab596f3f4a9a3e76195a3becfb82cff$"
+}
+}
