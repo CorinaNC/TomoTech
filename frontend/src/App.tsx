@@ -1,29 +1,25 @@
-import { Container, Grid, Box, Image } from '@chakra-ui/react'
+import { VStack, GridItem, Grid, Box, Image } from '@chakra-ui/react'
 import Header from "./components/header"
+import CalendarApp from "./components/calendar/CalendarApp.jsx"
 
 function App() {
   return (
-    <Box>
-      <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }} gap={3} padding={0}>
-        <Container margin={100} alignItems="center">
-          <Box bg="#CE9964">
-            <Box bg="red" textColor="white">
-              Lorem ipsum
-              Lorem ipsum
-              Lorem ipsum
-              Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
-            </Box>
+    <>
+      <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }} gap={3} padding={30} margin={0}>
+        <GridItem>
+          <Box>
+            <CalendarApp />
           </Box>
-        </Container>
-        <Container margin={100} alignItems="center">
+        </GridItem>
+        <GridItem>
+          <VStack>
           <Header />
-          <Box bg="#CE9964">
-            <Image src="https://via.placeholder.com/150" width={600} height={600}/>
-          </Box>
-        </Container>
+            <Image src="https://via.placeholder.com/150" width={500} height={500}/>
+            </VStack>
+        </GridItem>
       </Grid>
-    </Box>
-  )
+      </>
+  );
 }
 
-export default App
+export default App;

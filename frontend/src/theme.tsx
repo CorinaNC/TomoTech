@@ -24,7 +24,7 @@ const customTheme = extendTheme({
           },
         },
         circular: {
-            bg: '#CE9964',
+            bg: '#B57F4A',
             fontSize: 'md',
             color: "white",
             borderRadius: '50%',
