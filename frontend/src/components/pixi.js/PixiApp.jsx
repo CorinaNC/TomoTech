@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useState } from "react";
 
-import { Application, BlurFilter } from 'pixi.js';
+import { BlurFilter } from 'pixi.js';
 import { Stage, Sprite } from '@pixi/react';
 
 import { Box } from '@chakra-ui/react'
