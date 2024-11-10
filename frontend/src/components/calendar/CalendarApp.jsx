@@ -101,7 +101,7 @@ const CalendarApp = ({ onEventDeleted }) => {
       description: eventText,
       date: {
         year: selectedDate.getFullYear(),
-        month: selectedDate.getMonth(),
+        month: selectedDate.getMonth()+1,
         day: selectedDate.getDate(),
       },
       end_time: `${eventTime.hours.padStart(2, "0")}:${eventTime.minutes.padStart(
