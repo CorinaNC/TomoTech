@@ -1,0 +1,20 @@
+{"frames": {
+
+"crying(1).png":
+{
+	"frame": {"x":0,"y":0,"w":576,"h":576},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":576,"h":576},
+	"sourceSize": {"w":576,"h":576}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "crying.png",
+	"format": "RGBA8888",
+	"size": {"w":576,"h":576},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2148b91dd8bc9375ce82d0703a6709d8:e511a370f573c68852babf42f7588fa8:713fa68ee76c1c45346ad21bc670edef$"
+}
+}

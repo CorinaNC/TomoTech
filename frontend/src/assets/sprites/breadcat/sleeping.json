@@ -1,0 +1,20 @@
+{"frames": {
+
+"sleeping.png":
+{
+	"frame": {"x":0,"y":0,"w":192,"h":384},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":384},
+	"sourceSize": {"w":192,"h":384}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "sleeping.png",
+	"format": "RGBA8888",
+	"size": {"w":192,"h":384},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8ebdc310f0509190c5178f5d2292586c:cbc2cf017cc7f5b03dd132cb9119f63e:6e78bcaca25903692390d79d257f281e$"
+}
+}
