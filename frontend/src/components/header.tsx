@@ -1,14 +1,22 @@
+import { useState } from 'react';
 import { Container, Button, Link, Image, HStack } from '@chakra-ui/react'
 import FoodIcon from "../assets/jam.png"
 import SoundIcon from "../assets/sound.png"
+import MuteIcon from "../assets/mute.png"
 import MoneyIcon from "../assets/coin.png"
 import ShopIcon from  "../assets/sohp.png"
 const Header = () => {
+  const [isMuted, setIsMuted] = useState(false);
+
+  const toggleSound = () => {
+    setIsMuted((prevIsMuted) => !prevIsMuted);
+  };
+  
   return (
     <Container>
         <HStack spacing={1} mb={6} justifyContent="center">
-            <Button variant="circular">
-                <Image src={SoundIcon} width="100%" height="75%" />
+            <Button variant="circular" onClick={toggleSound}>
+                <Image src={isMuted ? MuteIcon : SoundIcon} width="100%" height="75%" />
             </Button>
             <Button variant="circular">
                 <Image src={FoodIcon} width="75%" height="75%"/>
