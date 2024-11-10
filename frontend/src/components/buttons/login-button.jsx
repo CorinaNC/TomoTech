@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "@chakra-ui/react"
 
 export const LoginButton = () => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, user } = useAuth0();
 
   const handleLogin = async () => {
     await loginWithRedirect({
@@ -17,16 +17,19 @@ export const LoginButton = () => {
   };
 
   return (
-    <Button
-    variant={"circular"}
-    onClick={handleLogin}
-    width="75px"
-    height="75px"
-    minWidth="75px"
-    minHeight="75px"
-    borderRadius="50%"
-    flexShrink={0}>
-      Log In
-    </Button>
+    <div>
+      <Button
+      variant={"circular"}
+      onClick={handleLogin}
+      width="75px"
+      height="75px"
+      minWidth="75px"
+      minHeight="75px"
+      borderRadius="50%"
+      flexShrink={0}>
+        Log In
+      </Button>
+    </div>
+
   );
 };

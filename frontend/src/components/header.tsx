@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Container, Button, Link, Image, HStack } from "@chakra-ui/react";
+import { Container, Button, Link, Image, HStack, Center } from "@chakra-ui/react";
 import FoodIcon from "../assets/jam.png";
 import SoundIcon from "../assets/sound.png";
 import MuteIcon from "../assets/mute.png";
 import MoneyIcon from "../assets/coin.png";
 import ShopIcon from "../assets/sohp.png";
 import { ButtonLog } from "./buttons/button-log.jsx"
+import { Profile } from "./Profile/profile.jsx";
 
 const Header = () => {
   const [isMuted, setIsMuted] = useState(false);
@@ -15,7 +16,7 @@ const Header = () => {
   };
 
   return (
-    <Container paddingX={6}>
+    <Container paddingX={6} alignContent={"center"}>
       <HStack spacing={6} mb={6} justifyContent="center">     
         <ButtonLog></ButtonLog>
         <Button

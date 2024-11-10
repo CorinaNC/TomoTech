@@ -2,6 +2,7 @@ import { VStack, GridItem, Grid, Box } from '@chakra-ui/react'
 import Header from "../components/header.tsx"
 import CalendarApp from "../components/calendar/CalendarApp.jsx"
 import PixiApp from "../components/pixi.js/PixiApp.jsx"
+import { Profile } from '../components/Profile/profile.jsx'
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
         </GridItem>
         <GridItem>
           <VStack>
+            <Profile />
           <Header />
             <PixiApp />
             </VStack>
