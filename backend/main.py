@@ -1,47 +1,55 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import List, Optional
-from uuid import UUID, uuid4
-
+from typing import Optional, List
+from datetime import datetime
 
 app = FastAPI()
 
-class Task(BaseModel):
-    id: Optional[UUID] = None
-    title: str
+class EventDate(BaseModel):
+    year: int
+    month: int
+    day: int
+    
+class CalendarEvent(BaseModel):
+    id: int
     description: Optional[str] = None
-    completed: bool = False
+    date: EventDate
+    end_time: str
 
-tasks = [Task(title="Task 1", description="Description 1"), Task(title="Task 2")]
+events = [CalendarEvent(id=1, description="hey the backend is working!", date=EventDate(year=2024, month=11, day=10), end_time="12:00")]
 
-@app.post("/", response_model=Task)
-def create_task(task: Task):
-    task.id = uuid4()
-    tasks.append(task)
-    return task
+origins = ["*"]
 
-@app.get("/", response_model=List[Task])
-def read_tasks():
-    return tasks
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.get("/{task_id}", response_model=Task)
-def read_task(task_id: UUID):
-    for task in tasks:
-        if task.id == task_id:
-            return task
-    return HTTPException(status_code=404, detail="Task not found")
+@app.post("/events/", response_model=CalendarEvent)
+async def create_task(event: CalendarEvent):
+    if event.id is None:
+        event.id = len(events)+1
+    events.append(event)
+    return event
 
-@app.put("/{task_id}", response_model=Task)
-def update_task(task_id: UUID, task_update:Task):
-    for idx, task in enumerate(tasks):
-        if task.id == task_id:
-            updated_task = task.copy(update=task_update.dict(exclude_unset=True))
-            tasks[idx] = updated_task
-    raise HTTPException(status_code=404, detail="Task not found")
+@app.get("/events/", response_model=List[CalendarEvent])
+async def read_events():
+    return events
 
-@app.delete("/{task_id}", response_model=Task)
-def delete_task(task_id: UUID):
-    for idx, task in enumerate(tasks):
-        if task.id == task_id:
-            return tasks.pop(idx)
-    raise HTTPException(status_code=404, detail="Task not found")
+@app.put("/events/{event_id}", response_model=CalendarEvent)
+async def update_event(event_id: int, updated_event: CalendarEvent):
+    for i, event in enumerate(events):
+        if event.id == event_id:
+            events[i] = updated_event
+            return updated_event
+    raise HTTPException(status_code=404, detail="Event not found")
+
+@app.delete("/events/{event_id}", response_model=List[CalendarEvent])
+async def delete_event(event_id: int):
+    global events
+    events = [event for event in events if event.id != event_id]
+    return events

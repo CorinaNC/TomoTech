@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { Application, BlurFilter } from 'pixi.js';
+import { BlurFilter } from 'pixi.js';
 import { Stage, Sprite } from '@pixi/react';
 
 import { Box } from '@chakra-ui/react'
@@ -8,6 +8,7 @@ import Background from "../../assets/sprites/petBg.png"
 
 const PixiApp = () => {
   const blurFilter = useMemo(() => new BlurFilter(2), []);
+
   return (
     <Box borderColor="red" borderRadius="5px">
         <Stage width={500} height={500}>
