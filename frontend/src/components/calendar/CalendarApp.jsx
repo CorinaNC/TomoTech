@@ -34,14 +34,14 @@ const CalendarApp = () => {
   const [eventTime, setEventTime] = useState({ hours: "00", minutes: "00" });
   const [eventText, setEventText] = useState("");
   const [editingEvent, setEditingEvent] = useState(null);
-  const baseUrl = "tomotech.onrender.com/"
+  const baseUrl = "tomotech.onrender.com";
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch(`http://${baseUrl}/events`);
+        const response = await fetch(`https://${baseUrl}/events`);
         if (!response.ok) {
           throw new Error("Failed to fetch events");
         }
@@ -66,6 +66,12 @@ const CalendarApp = () => {
     setCurrentYear((prevYear) =>
       currentMonth === 11 ? prevYear + 1 : prevYear
     );
+    origins = [
+        "https://localhost.tiangolo.com",
+        "https://localhost.tiangolo.com",
+        "https://localhost",
+        "https://localhost:8080",
+    ]
   };
 
   const handleDayClick = (day) => {
@@ -121,7 +127,7 @@ const CalendarApp = () => {
     setEditingEvent(null);
 
     try {
-      const res = await fetch(`http://${baseUrl}:8000/events`, {
+      const res = await fetch(`https://${baseUrl}:8000/events`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -147,7 +153,7 @@ const CalendarApp = () => {
     setShowEventPopup(true);
     
     try {
-      const response = await fetch(`http://${baseUrl}:8000/events/${event.id}`, {
+      const response = await fetch(`https://${baseUrl}:8000/events/${event.id}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json',
@@ -173,7 +179,7 @@ const CalendarApp = () => {
       });
       if (!response.ok) {
         throw new Error("Failed to delete event");
-      }
+      }c
     } catch (err) {
       console.error(err);
     }
