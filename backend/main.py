@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 from uuid import UUID, uuid4
 
+
 app = FastAPI()
 
 @app.get("/items/{item_id}")
