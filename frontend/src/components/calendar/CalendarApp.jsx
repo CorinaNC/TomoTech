@@ -31,7 +31,7 @@ const CalendarApp = () => {
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [showEventPopup, setShowEventPopup] = useState(false);
   const [events, setEvents] = useState([]);
-  const [eventTime, setEventTime] = useState({ hours: "00", minutes: "00" });
+  const [eventTime, setEventTime] = useState({ hours: "", minutes: "" });
   const [eventText, setEventText] = useState("");
   const [editingEvent, setEditingEvent] = useState(null);
 
@@ -58,7 +58,7 @@ const CalendarApp = () => {
     if (clickedDate >= today || isSameDate(clickedDate, today)) {
       setSelectedDate(clickedDate);
       setShowEventPopup(true);
-      setEventTime({ hours: "00", minutes: "00" });
+      setEventTime({ hours: "", minutes: "" });
       setEventText("");
       setEditingEvent(null);
     }
@@ -96,7 +96,7 @@ const CalendarApp = () => {
     updatedEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     setEvents(updatedEvents);
-    setEventTime({ hours: "00", minutes: "00" });
+    setEventTime({ hours: "", minutes: "" });
     setEventText("");
     setShowEventPopup(false);
     setEditingEvent(null);
@@ -121,9 +121,12 @@ const CalendarApp = () => {
   const handleTimeChange = (e) => {
     const { name, value } = e.target;
 
+    if (name === "hours" && (value < 0 || value > 24)) return;
+    if (name === "minutes" && (value < 0 || value > 59)) return;
+
     setEventTime((prevTime) => ({
       ...prevTime,
-      [name]: value.padStart(2, "0"),
+      [name]: value,
     }));
   };
 
@@ -171,6 +174,31 @@ const CalendarApp = () => {
         </div>
       </div>
       <div className="events">
+        {events.map((event, index) => (
+          <div className="event" key={index}>
+            <div className="event-date-wrapper">
+              <div className="event-date">{`${
+                monthsOfYear[event.date.getMonth()]
+              } ${event.date.getDate()}, ${event.date.getFullYear()}`}</div>
+              <div className="event-time">{event.time}</div>
+            </div>
+            <div className="event-text">{event.text}</div>
+            <div className="event-buttons">
+              <button
+                className="edit-event"
+                onClick={() => handleEditEvent(event)}
+              >
+                <Icon as={HiPencilAlt} className="icon" />
+              </button>
+              <button
+                className="delete-event"
+                onClick={() => handleDeleteEvent(event.id)}
+              >
+                <Icon as={HiOutlineMinusCircle} className="icon" />
+              </button>
+            </div>
+          </div>
+        ))}
         {showEventPopup && (
           <div className="event-popup">
             <div className="time-input">
@@ -215,31 +243,6 @@ const CalendarApp = () => {
             </button>
           </div>
         )}
-        {events.map((event, index) => (
-          <div className="event" key={index}>
-            <div className="event-date-wrapper">
-              <div className="event-date">{`${
-                monthsOfYear[event.date.getMonth()]
-              } ${event.date.getDate()}, ${event.date.getFullYear()}`}</div>
-              <div className="event-time">{event.time}</div>
-            </div>
-            <div className="event-text">{event.text}</div>
-            <div className="event-buttons">
-              <button
-                className="edit-event"
-                onClick={() => handleEditEvent(event)}
-              >
-                <Icon as={HiPencilAlt} className="icon" />
-              </button>
-              <button
-                className="delete-event"
-                onClick={() => handleDeleteEvent(event.id)}
-              >
-                <Icon as={HiOutlineMinusCircle} className="icon" />
-              </button>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   );
