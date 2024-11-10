@@ -1,5 +1,5 @@
 # TomoTech
-Tasks, but with a Tamagotchi \
+Tasks Calendar, but with a Tamagotchi \
 Website Link: https://to-mo.tech/
 
 ## Team Members
