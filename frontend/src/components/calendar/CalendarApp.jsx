@@ -41,7 +41,7 @@ const CalendarApp = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch(`http://${baseUrl}/events`);
+        const response = await fetch(`https://${baseUrl}/events`);
         if (!response.ok) {
           throw new Error("Failed to fetch events");
         }
@@ -67,10 +67,10 @@ const CalendarApp = () => {
       currentMonth === 11 ? prevYear + 1 : prevYear
     );
     origins = [
-        "http://localhost.tiangolo.com",
         "https://localhost.tiangolo.com",
-        "http://localhost",
-        "http://localhost:8080",
+        "https://localhost.tiangolo.com",
+        "https://localhost",
+        "https://localhost:8080",
     ]
   };
 
@@ -127,7 +127,7 @@ const CalendarApp = () => {
     setEditingEvent(null);
 
     try {
-      const res = await fetch(`http://${baseUrl}:8000/events`, {
+      const res = await fetch(`https://${baseUrl}:8000/events`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -153,7 +153,7 @@ const CalendarApp = () => {
     setShowEventPopup(true);
     
     try {
-      const response = await fetch(`http://${baseUrl}:8000/events/${event.id}`, {
+      const response = await fetch(`https://${baseUrl}:8000/events/${event.id}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ const CalendarApp = () => {
       });
       if (!response.ok) {
         throw new Error("Failed to delete event");
-      }
+      }c
     } catch (err) {
       console.error(err);
     }
