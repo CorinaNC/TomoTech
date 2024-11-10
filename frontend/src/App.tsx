@@ -18,6 +18,13 @@ function App() {
     }, 3000); // Pet will be in feeding state for 3 seconds
   };
 
+  const handleEventDeleted = () => {
+    setCurrentImageIndex(0);
+    setTimeout(() => {
+      setCurrentImageIndex(0);
+    }, 1000);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       const direction = Math.random() < 0.5 ? -1 : 1; // Randomly choose left or right
@@ -47,7 +54,7 @@ function App() {
       >
         <GridItem>
           <Box>
-            <CalendarApp />
+            <CalendarApp onEventDeleted={handleEventDeleted} />
           </Box>
         </GridItem>
         <GridItem>

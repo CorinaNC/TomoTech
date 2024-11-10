@@ -7,7 +7,7 @@ import { HiOutlineX } from "react-icons/hi";
 import { HiPencilAlt } from "react-icons/hi";
 import { HiOutlineMinusCircle } from "react-icons/hi";
 
-const CalendarApp = () => {
+const CalendarApp = ({ onEventDeleted }) => {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const monthsOfYear = [
     "January",
@@ -34,7 +34,7 @@ const CalendarApp = () => {
   const [eventTime, setEventTime] = useState({ hours: "00", minutes: "00" });
   const [eventText, setEventText] = useState("");
   const [editingEvent, setEditingEvent] = useState(null);
-  const baseUrl = "tomotech.onrender.com";
+  const baseUrl = "localhost:8000";
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
@@ -109,7 +109,6 @@ const CalendarApp = () => {
         "0"
       )}`,
     };
-
     let updatedEvents = [...events];
 
     if (editingEvent) {
@@ -180,6 +179,11 @@ const CalendarApp = () => {
       if (!response.ok) {
         throw new Error("Failed to delete event");
       }
+
+      if (onEventDeleted) {
+        onEventDeleted();
+      }
+
     } catch (err) {
       console.error(err);
     }
