@@ -1,7 +1,7 @@
 import { VStack, GridItem, Grid, Box } from '@chakra-ui/react'
-import Header from "./components/header"
-import CalendarApp from "./components/calendar/CalendarApp.jsx"
-import PixiApp from "./components/pixi.js/PixiApp"
+import Header from "../components/header.tsx"
+import CalendarApp from "../components/calendar/CalendarApp.jsx"
+import PixiApp from "../components/pixi.js/PixiApp.jsx"
 
 function Home() {
   return (

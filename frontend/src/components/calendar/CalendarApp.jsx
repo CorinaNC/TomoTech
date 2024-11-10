@@ -34,14 +34,14 @@ const CalendarApp = () => {
   const [eventTime, setEventTime] = useState({ hours: "00", minutes: "00" });
   const [eventText, setEventText] = useState("");
   const [editingEvent, setEditingEvent] = useState(null);
-  const baseUrl = "tomotech.onrender.com/"
+  const baseUrl = "tomotech.onrender.com"
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch(`http://${baseUrl}/events`);
+        const response = await fetch(`https://${baseUrl}/events`);
         if (!response.ok) {
           throw new Error("Failed to fetch events");
         }

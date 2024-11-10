@@ -5,6 +5,8 @@ import SoundIcon from "../assets/sound.png";
 import MuteIcon from "../assets/mute.png";
 import MoneyIcon from "../assets/coin.png";
 import ShopIcon from "../assets/sohp.png";
+import { ButtonLog } from "./buttons/button-log.jsx"
+
 const Header = () => {
   const [isMuted, setIsMuted] = useState(false);
 
@@ -14,7 +16,8 @@ const Header = () => {
 
   return (
     <Container paddingX={6}>
-      <HStack spacing={6} mb={6} justifyContent="center">
+      <HStack spacing={6} mb={6} justifyContent="center">     
+        <ButtonLog></ButtonLog>
         <Button
           variant="circular"
           onClick={toggleSound}
