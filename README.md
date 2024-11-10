@@ -21,20 +21,23 @@ The app relies on a reward/punishment system so the user is incentivized to comp
 
 ## How we built it
 
-We first created the design and roadmap of our hack using plain old whiteboards.  Then, we decided to move to UML and Figma, first designing the user-interface and then defining what functions would be necessary for what we wanted to do.  We created a boilerplate and installed all the dependencies we needed, deciding on FastAPI as our main backend framework and a React + Pixi.js combo for the two main frontend components.  We styled the app with ChakraUI and CSS3.
+We first created the design and roadmap of our hack using plain old whiteboards.  Then, we decided to move to UML and Figma, first designing the user-interface and then defining what functions would be necessary for what we wanted to do.  We created a boilerplate and installed all the dependencies we needed, deciding on FastAPI as our main backend framework and React for the two main frontend components.  We styled the app with ChakraUI and CSS3.
 
 Since we are mostly beginners, we tried to delegate tasks as equally as possible between members, Allison doing spritework, documentation, character design, and game design; Manan doing backend, authentication, and frontend connectivity; Corina doing frontend, some backend, and a lot of program design; and Serena doing frontend, web design, and game design.  Each of us contributed quite a bit to this project so it's difficult to put a definition on how we split it up, but ultimately we're very proud of what we accomplished in 24 hours!
 
 ## Challenges we ran into
 
+One of the biggest challenges we ran into was the graphics library we were using.  Originally, to animate the TomoBread component we wanted to use the Pixi.js library.  However, we spent two hours trying to integrate it inside of react and installing different dependencies before realizing that it would probably be better to just stick to using CSS and React.  We also had issues connecting the backend api endpoints to the frontend during the deployment phase, but found a stray "/" as the root of the problem.  
 
 ## Accomplishments that we're proud of
-We're proud of being able to make a 
+We're proud of being able to make a nicely designed calendar alongside programming interactivity with our TomoBread character.  This was two of our member's second Hackathon and the other two's first, so we're proud of ourselves for getting the MVP components to deploy correctly before the deadline!
 
 ## What we learned
 
+A lot of stuff! We learned how annoying Pixi.js + React is, we learned how to create API endpoints from scratch and have the React app communicate with it, we learned how to design a program from the planning phase, to the design & drafting phase, to the code phase!  And, we dabbled a bit into game/app design with the TomoBread component and we even learned a bit of Auth0. 
 
 ## What's next for TomoBread
+
 Our TomoBread as he is right now is a little lonely, so in the future, we hope to implement some TomoFriends! We'll have new accessories, new TomoBreads, new (even customizable) environments, and new expressions, as well as some improvements to the UI (there's only so much you can do in 24 hours, after all). Who knows, maybe even one day, we'll integrate some minigames and multiplayer as well!
 
 ## Built With
