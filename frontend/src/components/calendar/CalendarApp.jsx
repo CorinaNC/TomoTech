@@ -7,7 +7,7 @@ import { HiOutlineX } from "react-icons/hi";
 import { HiPencilAlt } from "react-icons/hi";
 import { HiOutlineMinusCircle } from "react-icons/hi";
 
-const CalendarApp = () => {
+const CalendarApp = ({ onEventDeleted }) => {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const monthsOfYear = [
     "January",
@@ -41,7 +41,7 @@ const CalendarApp = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch(`http://${baseUrl}/events`);
+        const response = await fetch(`https://${baseUrl}/events`);
         if (!response.ok) {
           throw new Error("Failed to fetch events");
         }
@@ -109,7 +109,6 @@ const CalendarApp = () => {
         "0"
       )}`,
     };
-
     let updatedEvents = [...events];
 
     if (editingEvent) {
@@ -127,7 +126,7 @@ const CalendarApp = () => {
     setEditingEvent(null);
 
     try {
-      const res = await fetch(`http://${baseUrl}/events`, {
+      const res = await fetch(`https://${baseUrl}/events`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -153,7 +152,7 @@ const CalendarApp = () => {
     setShowEventPopup(true);
     
     try {
-      const response = await fetch(`http://${baseUrl}/events/${event.id}`, {
+      const response = await fetch(`https://${baseUrl}/events/${event.id}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json',
@@ -174,12 +173,17 @@ const CalendarApp = () => {
     const updatedEvents = events.filter((event) => event.id !== eventId);
     setEvents(updatedEvents);
     try {
-      const response = await fetch(`http://${baseUrl}/events/${eventId}`, {
+      const response = await fetch(`https://${baseUrl}/events/${eventId}`, {
         method: "DELETE",
       });
       if (!response.ok) {
         throw new Error("Failed to delete event");
       }
+
+      if (onEventDeleted) {
+        onEventDeleted();
+      }
+
     } catch (err) {
       console.error(err);
     }
