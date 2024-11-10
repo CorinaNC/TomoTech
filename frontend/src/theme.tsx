@@ -1,4 +1,4 @@
-import { extendTheme, textDecoration } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 // dummy theme, my original website theme
 const customTheme = extendTheme({
   styles: {
