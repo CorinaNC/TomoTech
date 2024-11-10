@@ -44,7 +44,7 @@ html {
 
 .heading {
   /* font-family: ; */
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(4rem, 3.8cqi, 7rem);
   
   color: #000000;
   /* letter-spacing: 0.1rem; */
@@ -59,7 +59,7 @@ html {
 }
 
 .navigate-date h2 {
-  font-size: clamp(1rem, 2vw, 2rem);
+  font-size: clamp(1.5rem, 1.5cqi, 2.5rem);
   color: #bbb;
   padding-left: 1.3rem;
 }
