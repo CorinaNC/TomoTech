@@ -1,12 +1,12 @@
-import './App.css'
-import CalendarApp from "./components/calendar/CalendarApp.jsx"
+import "./App.css";
+import CalendarApp from "./components/calendar/CalendarApp.jsx";
 
 function App() {
   return (
-    <body>
+    <div>
       <CalendarApp />
-    </body>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
