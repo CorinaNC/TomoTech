@@ -20,6 +20,8 @@ events = []
 async def create_event(event : Event):
     event.id = len(events) + 1
     event.start_time = datetime.datetime.now()
+    event.description = await()
+    event.end_time = await()
     return events.append(event)
 
 @app.get("/calendar/events", response_model = List[Event])
