@@ -31,7 +31,7 @@ const CalendarApp = () => {
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [showEventPopup, setShowEventPopup] = useState(false);
   const [events, setEvents] = useState([]);
-  const [eventTime, setEventTime] = useState({ hours: "", minutes: "" });
+  const [eventTime, setEventTime] = useState({ hours: "00", minutes: "00" });
   const [eventText, setEventText] = useState("");
   const [editingEvent, setEditingEvent] = useState(null);
 
@@ -58,7 +58,7 @@ const CalendarApp = () => {
     if (clickedDate >= today || isSameDate(clickedDate, today)) {
       setSelectedDate(clickedDate);
       setShowEventPopup(true);
-      setEventTime({ hours: "", minutes: "" });
+      setEventTime({ hours: "00", minutes: "00" });
       setEventText("");
       setEditingEvent(null);
     }
@@ -96,7 +96,7 @@ const CalendarApp = () => {
     updatedEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     setEvents(updatedEvents);
-    setEventTime({ hours: "", minutes: "" });
+    setEventTime({ hours: "00", minutes: "00" });
     setEventText("");
     setShowEventPopup(false);
     setEditingEvent(null);
@@ -121,12 +121,9 @@ const CalendarApp = () => {
   const handleTimeChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === "hours" && (value < 0 || value > 24)) return;
-    if (name === "minutes" && (value < 0 || value > 59)) return;
-
     setEventTime((prevTime) => ({
       ...prevTime,
-      [name]: value,
+      [name]: value.padStart(2, "0"),
     }));
   };
 
