@@ -1,6 +1,7 @@
 import { VStack, GridItem, Grid, Box, Image } from '@chakra-ui/react'
 import Header from "./components/header"
 import CalendarApp from "./components/calendar/CalendarApp.jsx"
+import PixiApp from "./components/pixi.js/PixiApp"
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <GridItem>
           <VStack>
           <Header />
-            <Image src="https://via.placeholder.com/150" width={500} height={500}/>
+            <PixiApp />
             </VStack>
         </GridItem>
       </Grid>
