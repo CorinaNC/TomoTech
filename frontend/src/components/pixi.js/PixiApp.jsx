@@ -6,8 +6,6 @@ import { Stage, Sprite } from '@pixi/react';
 import { Box } from '@chakra-ui/react'
 import Background from "../../assets/sprites/petBg.png"
 
-const textures = makeAnimatedSpriteTextures();
-
 const PixiApp = () => {
   const blurFilter = useMemo(() => new BlurFilter(2), []);
   return (
