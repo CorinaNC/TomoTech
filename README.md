@@ -27,8 +27,8 @@ TomoBread
 ## What we learned
 
 
-## What's next for SoilSensing
+## What's next for TomoBread
 
 
 ## Built With
-React, Chakra-UI, JavaScript, CSS, TypeScript, Python, HTML
+FastAPI, RESTful API, CRUD Operations, React, Vite, Chakra-UI, Netlify & Render (Deployment), Pixi.js, JavaScript, CSS, TypeScript, Python3, HTML, Visual Studio Code, GitHub
