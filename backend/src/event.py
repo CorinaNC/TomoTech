@@ -25,4 +25,12 @@ async def create_event(event : Event):
     return events.append(event)
 
 @app.get("/calendar/events", response_model = List[Event])
-async def read_events
+def read_events(events : List[Event]):
+    return events
+
+@app.get("/calender/events/{id}")
+async def get_event(id : int):
+    for event in enumerate(events):
+        if event.id == id:
+            return event
+    return 404
