@@ -1,0 +1,20 @@
+{"frames": {
+
+"walk-left.png":
+{
+	"frame": {"x":0,"y":0,"w":576,"h":576},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":576,"h":576},
+	"sourceSize": {"w":576,"h":576}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "walk.png",
+	"format": "RGBA8888",
+	"size": {"w":576,"h":576},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8f526a399361510bc6811f2cf64caa6d:4d6fba675e9290f1c73013388a3938b7:f9e905ee92ca6262c513e44422b15402$"
+}
+}
