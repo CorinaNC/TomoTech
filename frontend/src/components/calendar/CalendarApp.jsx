@@ -34,7 +34,7 @@ const CalendarApp = () => {
   const [eventTime, setEventTime] = useState({ hours: "00", minutes: "00" });
   const [eventText, setEventText] = useState("");
   const [editingEvent, setEditingEvent] = useState(null);
-  const baseUrl = "tomotech.onrender.com/"
+  const baseUrl = "localhost:8000"
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
@@ -66,6 +66,12 @@ const CalendarApp = () => {
     setCurrentYear((prevYear) =>
       currentMonth === 11 ? prevYear + 1 : prevYear
     );
+    origins = [
+        "http://localhost.tiangolo.com",
+        "https://localhost.tiangolo.com",
+        "http://localhost",
+        "http://localhost:8080",
+    ]
   };
 
   const handleDayClick = (day) => {
