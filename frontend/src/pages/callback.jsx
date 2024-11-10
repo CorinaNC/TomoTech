@@ -5,10 +5,12 @@ import PixiApp from "../components/pixi.js/PixiApp.jsx"
 
 function Callback() {
   return (
-    <>
-    Hello
-      </>
-  );
+    <div
+    style={{
+        backgroundColor: '#CE9964'
+    }}
+  />
+    );
 }
 
 export default Callback;
