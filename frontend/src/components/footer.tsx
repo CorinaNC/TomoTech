@@ -6,7 +6,7 @@ const Footer = () => {
         Created for MadHacks 2024
         </Heading>
       <Heading textAlign="center" fontSize={30} textColor="white">
-      <Link href="https://github.com/CorinaNC/TomoTech/main" _hover={{ textDecoration: "underline" }} isExternal>
+      <Link href="https://github.com/CorinaNC/TomoTech/" _hover={{ textDecoration: "underline" }} isExternal>
       GitHub
       </Link>
     </Heading>
