@@ -3,10 +3,13 @@ import FoodIcon from "../assets/jam.png"
 import SoundIcon from "../assets/sound.png"
 import MoneyIcon from "../assets/coin.png"
 import ShopIcon from  "../assets/sohp.png"
+import { LoginButton } from "./login-button.jsx"
+
 const Header = () => {
   return (
     <Container>
         <HStack spacing={1} mb={6} justifyContent="center">
+            <Button variant="circular"><LoginButton></LoginButton></Button>
             <Button variant="circular">
                 <Image src={SoundIcon} width="100%" height="75%" />
             </Button>

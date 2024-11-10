@@ -6,23 +6,21 @@ import App from "./App"
 import './index.css';
 import customTheme from "./theme"
 import BreadWrapper from "./components/breadWrapper"
+import { BrowserRouter } from "react-router-dom"
+import { Auth0ProviderWithNavigate } from "./auth0-provider-with-navigate";
 
 const root = createRoot(document.getElementById('root'));
 
 root.render(
-  <Auth0Provider
-    domain="dev-1b61qkzokr8fuj25.us.auth0.com"
-    clientId="3MppoaQUXmsbo8UNd1WBded6MrdzORKJ"
-    authorizationParams={{
-      redirect_uri: window.location.origin
-    }}
-  >
   <React.StrictMode>
-    <BreadWrapper>
-    <ChakraProvider theme={customTheme}>
-      <App />
-    </ChakraProvider>
-    </BreadWrapper>
-  </React.StrictMode>
-  </Auth0Provider>,
+    <BrowserRouter>
+      <Auth0ProviderWithNavigate>
+        <BreadWrapper>
+          <ChakraProvider theme={customTheme}>
+            <App />
+          </ChakraProvider>
+        </BreadWrapper>
+      </Auth0ProviderWithNavigate>
+    </BrowserRouter>
+  </React.StrictMode>,
 )
