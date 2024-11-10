@@ -1,12 +1,11 @@
 import './App.css'
+import { Routes, Route } from "react-router-dom";
 
-function App() {
-
+export default function App() {
   return (
-    <body>
-      TomoTech
-    </body>
+    <>
+    <Routes>
+
+    </>
   )
 }
-
-export default App
