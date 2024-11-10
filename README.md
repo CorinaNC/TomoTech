@@ -1,11 +1,11 @@
-# TomoTech
+# TomoBread
 Tasks Calendar, but with a Tamagotchi \
 Website Link: https://to-mo.tech/
 
 ## Team Members
 - Corina Conklin - https://www.corinanc.site/
 - Serena Xin - https://ajisairen.github.io/
-- Manan Chaturvedi - 
+- Manan Chaturvedi - chatu035@umn.edu
 - Allison Lee - https://www.allisonlee.lol/
 
 ## Inspiration
