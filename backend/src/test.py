@@ -1,3 +1,9 @@
-import uvicorn
+from fastapi import FastAPI
+from pydantic import BaseModel, PositiveInt
+from enum import Enum
 
-uvicorn.run()
+app = FastAPI()
+
+@app.get("/")
+async def basic():
+    return{"hello" : "message"}

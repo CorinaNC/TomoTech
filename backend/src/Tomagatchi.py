@@ -1,6 +1,5 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-from pydantic import PositiveInt
+from fastapi import FastAPI
+from pydantic import BaseModel, PositiveInt
 from enum import Enum
 
 app = FastAPI()
@@ -13,17 +12,18 @@ class Expressions(str, Enum):
     Tired = "Tired"
 
 class Tomagatchi(BaseModel):
-    name : str
-    velocity : float
-    dt : int
-    expression : Expressions
-    hungerLevel : PositiveInt
+    name: str
+    velocity: float
+    dt: int
+    expression: Expressions
+    hungerLevel: PositiveInt
 
-@app.get("/tomagatchi")
-async def getTomo(num : int | None):
-    return num
-
-
-if __name__ == "__main__":
-    tomo = Tomagatchi("One", 2, 3, "Happy", 4)
-    getTomo(22)
+@app.post("/tomagatchi")
+async def create_tomagatchi(tomo: Tomagatchi):
+    return {
+        "name": tomo.name,
+        "velocity": tomo.velocity,
+        "dt": tomo.dt,
+        "expression": tomo.expression.value,
+        "hungerLevel": tomo.hungerLevel
+    }
