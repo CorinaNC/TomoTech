@@ -204,7 +204,7 @@ const CalendarApp = () => {
                 type="number"
                 name="hours"
                 min={0}
-                max={24}
+                max={23}
                 className="hours"
                 value={eventTime.hours}
                 onChange={handleTimeChange}
@@ -221,10 +221,10 @@ const CalendarApp = () => {
               />
             </div>
             <textarea
-              placeholder="Enter Event Text (Max 100 Characters)"
+              placeholder="Enter Event Text (Max 50 Characters)"
               value={eventText}
               onChange={(e) => {
-                if (e.target.value.length <= 100) {
+                if (e.target.value.length <= 50) {
                   setEventText(e.target.value);
                 }
               }}

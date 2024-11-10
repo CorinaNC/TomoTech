@@ -1,0 +1,20 @@
+{"frames": {
+
+"happy-stand.png":
+{
+	"frame": {"x":0,"y":0,"w":384,"h":576},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":384,"h":576},
+	"sourceSize": {"w":384,"h":576}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "happy-stand.png",
+	"format": "RGBA8888",
+	"size": {"w":384,"h":576},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1b48e536df4b86fb9af300faf5d457fe:635a8fbe25a38648995d9e491da071db:449a810ba788b2b2e9d1c5d34d0c7356$"
+}
+}
