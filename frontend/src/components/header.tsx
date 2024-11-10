@@ -5,7 +5,7 @@ import SoundIcon from "../assets/sound.png";
 import MuteIcon from "../assets/mute.png";
 import MoneyIcon from "../assets/coin.png";
 import ShopIcon from "../assets/sohp.png";
-const Header = () => {
+const Header = ({ onFeed }) => {
   const [isMuted, setIsMuted] = useState(false);
 
   const toggleSound = () => {
@@ -35,6 +35,7 @@ const Header = () => {
           minHeight="75px"
           borderRadius="50%"
           flexShrink={0}
+          onClick={onFeed}
         >
           <Image src={FoodIcon} />
         </Button>
